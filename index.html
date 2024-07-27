@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        h1 {
+            letter-spacing: 3px;
+        }
+        .container {
+            background-color: #e9ecef;
+            border: 2px solid black;
+            height: 100%;
+            width: 50%;
+            margin-left: 25%;
+            margin-top: 6%;
+            text-align: center;
+            border-radius: 15px;
+        }
+        .show {
+            border: 2px solid grey;
+            width: 72%;
+            height: 42px;
+            border-radius: 10px;
+            margin-left: 14%;
+            text-align: center;
+        }
+        .show h2 {
+            margin-top: 1%;
+        }
+        .box1 {
+            font-weight: bold;
+            font-size: 25px;
+        }
+        input[type="number"] {
+            background-color: transparent;
+            font-size: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        button {
+            border-radius: 10px;
+            border: 2px solid #ffba08;
+            background-color: #ffba08;
+            width: 200px;
+            height: 30px;
+            font-size: 20px;
+        }
+        button:hover {
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body bgcolor="#343a40">
+    <div class="container">
+        <h1>GUESS MY NUMBER</h1>
+        <hr><br>
+        <div class="box1">
+            <label for="start">From : </label>
+            <input type="number" name="start" id="start" value="1">
+            <br><br>
+            <label for="end">To : </label>
+            <input type="number" name="end" id="end" value="100">
+            <br><br>
+            <button onclick="create_guess()">Start Guessing</button><br><br>
+        </div>
+        <div class="show">
+            <h2 id="display">Press Start guessing and Enter the Guessed number</h2>
+        </div>
+        <br><br>
+        <input type="number" placeholder="Enter here" id="answer"><br><br>
+        <button onclick="check()">Check</button><br><br>
+    </div>
+
+    <script>
+        let random;
+        let count = 0;
+
+        function create_guess() {
+            let start = parseInt(document.getElementById('start').value);
+            let end = parseInt(document.getElementById('end').value);
+
+            if (isNaN(start) || isNaN(end) || start >= end) {
+                alert('Please enter valid numbers with start less than end');
+                return;
+            }
+
+            random = Math.floor(Math.random() * (end - start + 1)) + start;
+            document.getElementById('display').innerHTML = `Start Guessing`;
+            count = 0; // Reset count for new game
+        }
+
+        function check() {
+            count++;
+            let answer = parseInt(document.getElementById('answer').value);
+
+            if (isNaN(answer)) {
+                alert('Please enter a valid number');
+                return;
+            }
+
+            if (answer === random) {
+                document.getElementById('display').innerHTML = `You got the correct Guess in ${count} chances.`;
+            } else if (answer < random) {
+                document.getElementById('display').innerHTML = `My number is greater than ${answer}.`;
+            } else {
+                document.getElementById('display').innerHTML = `My number is less than ${answer}.`;
+            }
+        }
+    </script>
+</body>
+</html>
