@@ -49,6 +49,34 @@
         button:hover {
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
         }
+        @media screen and (max-width:480px){
+            .container {
+            background-color: #e9ecef;
+            border: 2px solid black;
+            height: 100%;
+            width: 90%;
+            margin-left: 5%;
+            margin-top: 6%;
+            text-align: center;
+            border-radius: 15px;
+        }
+        .show {
+            border: 2px solid grey;
+            width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin-left: 10%;
+            text-align: center;
+        }
+        button {
+            border-radius: 10px;
+            border: 2px solid #ffba08;
+            background-color: #ffba08;
+            width: 200px;
+            height: 30px;
+            font-size: 20px;
+        }
+        }
     </style>
 </head>
 <body bgcolor="#343a40">
@@ -87,7 +115,7 @@
 
             random = Math.floor(Math.random() * (end - start + 1)) + start;
             document.getElementById('display').innerHTML = `Start Guessing`;
-            count = 0; // Reset count for new game
+            count = 0; 
         }
 
         function check() {
