@@ -103,7 +103,7 @@
         </div>
         <br><br>
         <input type="number" placeholder="Enter here" id="answer"><br><br>
-        <button onclick="check()">Check</button><br><br>
+        <button onclick="check()" id="check">Check</button><br><br>
         <button onclick="location.reload()">Reset game</button>
         <br><br>
     </div>
@@ -139,12 +139,13 @@
 
             if (answer === random) {
                 document.getElementById('display').innerHTML = `You got the correct Guess in ${count} chances.`;
-
+                document.getElementById('check').style.display="none";
             } else if (answer < random) {
                 document.getElementById('display').innerHTML = `My number is greater than ${answer}.`;
             } else {
                 document.getElementById('display').innerHTML = `My number is less than ${answer}.`;
             }
+            document.getElementById('answer').value = '';
         }
     </script>
 </body>
