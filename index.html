@@ -35,7 +35,6 @@
         }
         input[type="number"] {
             background-color: transparent;
-            
             font-size: 20px;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
@@ -105,6 +104,8 @@
         <br><br>
         <input type="number" placeholder="Enter here" id="answer"><br><br>
         <button onclick="check()">Check</button><br><br>
+        <button onclick="location.reload()">Reset game</button>
+        <br><br>
     </div>
 
     <script>
@@ -138,6 +139,7 @@
 
             if (answer === random) {
                 document.getElementById('display').innerHTML = `You got the correct Guess in ${count} chances.`;
+
             } else if (answer < random) {
                 document.getElementById('display').innerHTML = `My number is greater than ${answer}.`;
             } else {
