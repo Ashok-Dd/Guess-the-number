@@ -35,6 +35,7 @@
         }
         input[type="number"] {
             background-color: transparent;
+            
             font-size: 20px;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
@@ -59,6 +60,12 @@
             margin-top: 6%;
             text-align: center;
             border-radius: 15px;
+        }
+        input[type="number"] {
+            background-color: transparent;
+            width: 90%;
+            font-size: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         .show {
             border: 2px solid grey;
@@ -90,7 +97,7 @@
             <label for="end">To : </label>
             <input type="number" name="end" id="end" value="100">
             <br><br>
-            <button onclick="create_guess()">Start Guessing</button><br><br>
+            <button onclick="create_guess()">Set Limit</button><br><br>
         </div>
         <div class="show">
             <h2 id="display">Press Start guessing and Enter the Guessed number</h2>
@@ -103,10 +110,12 @@
     <script>
         let random;
         let count = 0;
-
+        let start = 1;
+        let end = 100;
+        random = Math.floor(Math.random() * (end - start + 1)) + start;
         function create_guess() {
-            let start = parseInt(document.getElementById('start').value);
-            let end = parseInt(document.getElementById('end').value);
+            start = parseInt(document.getElementById('start').value);
+            end = parseInt(document.getElementById('end').value);
 
             if (isNaN(start) || isNaN(end) || start >= end) {
                 alert('Please enter valid numbers with start less than end');
